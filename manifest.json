@@ -9,7 +9,6 @@
       "id": "leprabutton@random.net.ua",
       "strict_min_version": "42.0",
       "strict_max_version": "58.*",
-      "update_url": "https://example.com/updates.json"
     }
   },
 
