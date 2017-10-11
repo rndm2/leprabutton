@@ -1,0 +1,40 @@
+section {
+    padding: 5px 10px;
+}
+
+section div {
+    display: flex;
+    align-items: center;
+}
+
+#username {
+    color: #0080c0;
+    font-weight: bold;
+}
+
+.separator {
+    border-left: 1px solid lightgray;
+    height: 16px;
+    margin: 0 5px;
+}
+
+#stuff,
+#inbox {
+    margin: 0 5px;
+}
+
+#icon-stuff,
+#icon-stuff-active {
+    margin-top: 2px;
+}
+
+#icon-inbox,
+#icon-inbox-active {
+    margin-top: 4px;
+}
+
+.link-logo,
+.link-stuff,
+.link-inbox {
+    cursor: pointer;
+}

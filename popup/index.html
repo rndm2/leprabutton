@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<section>
+    <div id="not-authorised">Не авторизирован, сорян :(</div>
+    <div id="authorised">
+        Привет,&nbsp;<span id="username">%username%</span>
+        <div class="separator"></div>
+        <a class="link-logo" title="Правый клик - открыть настройки">
+            <img width="20" height="20" src="../icons/logo48.png" class="link-logo" />
+        </a>
+        <div class="separator"></div>
+        <img class="attitude" id="karma-minus" src="../icons/bullet-minus.png" title="Карма" />
+        <img class="attitude" id="karma-plus" src="../icons/bullet-plus.png" title="Карма" />
+        Карма:&nbsp;<span class="attitude" id="karma">%karma%</span>&nbsp;&nbsp;
+        <img src="../icons/bullet-plus.png" title="Рейтинг" />
+        Рейтинг:&nbsp;<span id="rating">%rating%</span>
+        <div class="separator"></div>
+        <a class="link-stuff">
+            <img class="link-stuff" id="icon-stuff" src="../icons/stuff.png" title="Мои вещи" />
+            <img class="link-stuff" id="icon-stuff-active" src="../icons/stuff-active.png" title="Мои вещи" />
+        </a>
+        <span id="stuff">%stuff%</span>
+        <a class="link-inbox">
+            <img class="link-inbox" id="icon-inbox" src="../icons/inbox.png" title="Инбокс" />
+            <img class="link-inbox" id="icon-inbox-active" src="../icons/inbox-active.png" title="Инбокс" />
+        </a>
+        <span id="inbox">%inbox%</span>
+    </div>
+</section>
+
+<script src="../lib/zepto.min.js"></script>
+<script src="helper.js"></script>
+
+</body>
+
+</html>

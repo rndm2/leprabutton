@@ -1,0 +1,32 @@
+.options {
+    width: 100%;
+}
+
+.options div {
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+    overflow: hidden;
+}
+
+.options div.last {
+    border: 0;
+}
+
+.options div label span {
+    display: block;
+    width: 80%;
+    float: left;
+    padding-right: 10px;
+}
+
+.options div label input {
+    float: left;
+}
+
+.options div > span {
+    display: block;
+    clear: both;
+    width: 80%;
+    font-size: 0.9em;
+    color: gray;
+}
