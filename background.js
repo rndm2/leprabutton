@@ -5,15 +5,17 @@ let leprabuttonPort;
 
 // Get cookies and settings
 const requestInitialData = () => Promise.all([
+  browser.storage.local.get('leprabutton'),
   browser.storage.local.get('leprabuttonSettings'),
   browser.cookies.getAll({ domain: `.${config.url.domain}`, name: config.cookieName })
 ]).then(onInitialDataReceived);
 
 // Starting, set shared objects, launch timer, etc
 const onInitialDataReceived = (responses) => {
-  const [settings, cookies] = responses;
+  const [data, settings, cookies] = responses;
   const [cookie] = cookies;
   const { leprabuttonSettings } = settings;
+  const { leprabutton } = data;
 
   if (!cookie || cookie.value === "" || isNaN(+cookie.value)) {
     user = {};
@@ -21,11 +23,12 @@ const onInitialDataReceived = (responses) => {
   }
 
   sharedSettings = { ...config.defaults, ...leprabuttonSettings };
+  sharedData = { ...leprabutton };
   user.uid = cookie.value;
 
   requestLeproData();
 
-  const time = (+leprabuttonSettings.updatePeriod) * 60 * 1000;
+  const time = (+sharedSettings.updatePeriod) * 60 * 1000;
 
   if (!isNaN(time) && time > 0) {
     setInterval(requestLeproData, time);
@@ -41,11 +44,7 @@ const requestLeproData = () => {
 // Put everything to local storage
 const onLeproDataReceived = (response) => {
   sharedData = { userData: user, ...sharedData, ...response };
-
-  browser.storage.local.get('leprabutton').then((oldResponse) => {
-    browser.storage.local.set({ leprabuttonPrev: oldResponse.leprabutton });
-    browser.storage.local.set({ leprabutton: sharedData });
-  });
+  browser.storage.local.set({ leprabutton: sharedData });
 };
 
 // If cookie changed, probably user logged in or out

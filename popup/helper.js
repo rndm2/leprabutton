@@ -3,10 +3,9 @@ const navigate = (url, newTab) => {
   window.close();
 };
 
-const updateUI = (responses) => {
-  const [storageData, settingsData] = responses;
-  const { leprabutton: data, leprabuttonPrev: dataPrev } = storageData;
-  const { leprabuttonSettings: settings } = settingsData;
+const updateUI = (data1) => {
+  const { sharedData: data, sharedSettings: settings } = data1;
+
   const loggedIn = data && data.uid && data.uid !== '' && !isNaN(+data.uid);
 
   $('#not-authorised').toggle(!loggedIn);
@@ -15,7 +14,6 @@ const updateUI = (responses) => {
   if (!loggedIn) {
     return;
   }
-
 
   const attitudeData = data.karma_votes[data.karma_votes.length - 1];
   const attitudeString = `${attitudeData.login} ${attitudeData.attitude}`;
@@ -46,10 +44,12 @@ const updateUI = (responses) => {
   $('#icon-inbox-active').toggle(hasInboxes);
 };
 
-Promise.all([
-  browser.storage.local.get(['leprabutton', 'leprabuttonPrev']),
-  browser.storage.local.get('leprabuttonSettings')
-]).then(updateUI);
+browser.runtime.connect({ name: 'leprabuttonPort' })
+  .onMessage.addListener((data) => {
+    console.log('Received message from background script', data);
+    updateUI(data);
+  });
+
 
 document.addEventListener('click', (e) => {
   if (e.button > 1) {
