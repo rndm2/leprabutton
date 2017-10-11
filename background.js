@@ -22,8 +22,8 @@ const onInitialDataReceived = (responses) => {
     return;
   }
 
-  sharedSettings = { ...config.defaults, ...leprabuttonSettings };
-  sharedData = { ...leprabutton };
+  sharedSettings = Object.assign({}, config.defaults, leprabuttonSettings);
+  sharedData = Object.assign({}, leprabutton);
   user.uid = cookie.value;
 
   requestLeproData();
@@ -43,7 +43,7 @@ const requestLeproData = () => {
 
 // Put everything to local storage
 const onLeproDataReceived = (response) => {
-  sharedData = { userData: user, ...sharedData, ...response };
+  sharedData = Object.assign({ userData: user }, sharedData, response);
   browser.storage.local.set({ leprabutton: sharedData });
 };
 
