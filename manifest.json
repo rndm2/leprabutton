@@ -2,7 +2,12 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.11",
+  "version": "0.12",
+  "author": "random2",
+  "developer": {
+    "name": "random2",
+    "url": "http://random.net.ua/leprabutton"
+  },
 
   "applications": {
     "gecko": {
@@ -12,8 +17,7 @@
     }
   },
 
-  "description": "Adds a button to navigate lepra ans some usefull userscripts",
-  "homepage_url": "http://random.net.ua/leprapanel2",
+  "description": "Добавялет лепрокнопку (в которой панель) и некоторые полезные юзерскрипты",
 
   "icons": {
     "48": "icons/logo48.png"
