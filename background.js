@@ -37,14 +37,60 @@ const onInitialDataReceived = (responses) => {
 
 // Request site data
 const requestLeproData = () => {
-  $.ajax({ type: 'get', url: config.url.api, dataType: 'json', success: onLeproDataReceived });
-  $.ajax({ type: 'get', url: `${config.url.api}/${user.uid}`, dataType: 'json', success: onLeproDataReceived });
+  $.ajax({ type: 'get', url: config.url.api.panel, dataType: 'json', success: onLeproDataReceived });
+  $.ajax({ type: 'get', url: `${config.url.api.panel}/${user.uid}`, dataType: 'json', success: onLeproDataReceived });
 };
 
 // Put everything to local storage
 const onLeproDataReceived = (response) => {
   sharedData = Object.assign({ userData: user }, sharedData, response);
   browser.storage.local.set({ leprabutton: sharedData });
+  updateBadge();
+};
+
+// Update badge text function
+const updateBadge = () => {
+  if (!sharedSettings.showBadges) {
+    browser.browserAction.setBadgeText({ text: '' });
+    browser.browserAction.setTitle({ title: browser.runtime.getManifest().browser_action.default_title });
+    return;
+  }
+
+  const stuffPrefix = 's';
+  const inboxPrefix = 'i';
+  const bothPrefix = 'a';
+  const getSummText = (summ) => summ >= 100 ? '99+' : summ;
+  let { myunreadposts, myunreadcomms, inboxunreadposts, inboxunreadcomms } = sharedData;
+
+  myunreadposts = +myunreadposts;
+  myunreadcomms = +myunreadcomms;
+  inboxunreadposts = +inboxunreadposts;
+  inboxunreadcomms = +inboxunreadcomms;
+
+  const stuffSumm = myunreadposts + myunreadcomms;
+  const inboxSumm = inboxunreadposts + inboxunreadcomms;
+  const bothSumm = stuffSumm + inboxSumm;
+
+  let titleText =
+    ` Привет, ${sharedData.login}! Вот что у тебя есть: ` +
+    (stuffSumm ? `мои вещи: ` : '') +
+    `${myunreadposts > 0 ? (myunreadposts + '/' + myunreadcomms) : (myunreadcomms > 0 ? myunreadcomms : '')}` +
+    (stuffSumm && inboxSumm ? `, ` : '') +
+    (inboxSumm ? `инбокс: ` : '') +
+    `${inboxunreadposts > 0 ? (inboxunreadposts + '/' + inboxunreadcomms) : (inboxunreadcomms > 0 ? inboxunreadcomms : '')} `
+  ;
+  let badgeText = '';
+
+  if (stuffSumm > 0 && inboxSumm > 0) {
+    badgeText = `${bothPrefix}${getSummText(bothSumm)}`;
+  } else if (stuffSumm > 0) {
+    badgeText = `${stuffPrefix}${getSummText(stuffSumm)}`;
+  } else if (inboxSumm > 0) {
+    badgeText = `${inboxPrefix}${getSummText(inboxSumm)}`;
+  }
+
+  browser.browserAction.setBadgeText({ text: badgeText });
+  browser.browserAction.setTitle({ title: titleText });
 };
 
 // If cookie changed, probably user logged in or out
@@ -62,6 +108,7 @@ browser.cookies.onChanged.addListener((data) => {
 browser.storage.onChanged.addListener((data) => {
   if (data.leprabuttonSettings !== undefined) {
     sharedSettings = data.leprabuttonSettings.newValue;
+    updateBadge();
   }
 });
 

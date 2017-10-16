@@ -19,6 +19,8 @@ const updateUI = (data1) => {
   const attitudeString = `${attitudeData.login} ${attitudeData.attitude}`;
   const isPositiveAttitude = settings.thirdOption || attitudeData.attitude >= 0;
 
+  $('.labels').toggle(settings.showLabels);
+
   $('#karma-plus').toggle(isPositiveAttitude);
   $('#karma-minus').toggle(!isPositiveAttitude);
   $('#username').text(data.login);
