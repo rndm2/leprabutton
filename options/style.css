@@ -21,6 +21,18 @@
 
 .options div label input {
     float: left;
+    text-align: center;
+}
+
+.options div label input[type="number"],
+.options div label input[type="text"] {
+    width: 50px;
+}
+
+.options div label input.short {
+    width: 25px;
+    text-align: center;
+    margin: 0 5px 0 0;
 }
 
 .options div > span {

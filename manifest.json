@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.16",
+  "version": "0.17",
   "author": "random2",
   "developer": {
     "name": "random2",
@@ -32,7 +32,7 @@
   },
 
   "background": {
-    "scripts": ["lib/zepto.min.js", "config.js", "background.js"]
+    "scripts": ["lib/zepto.min.js", "lib/lodash.min.js", "config.js", "background.js"]
   },
 
   "options_ui": {

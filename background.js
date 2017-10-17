@@ -1,7 +1,7 @@
 let sharedData = {};
 let sharedSettings = {};
 let user = {};
-let leprabuttonPort;
+let leprabuttonDataPort;
 
 // Get cookies and settings
 const requestInitialData = () => Promise.all([
@@ -36,10 +36,10 @@ const onInitialDataReceived = (responses) => {
 };
 
 // Request site data
-const requestLeproData = () => {
+const requestLeproData = _.throttle(() => {
   $.ajax({ type: 'get', url: config.url.api.panel, dataType: 'json', success: onLeproDataReceived });
   $.ajax({ type: 'get', url: `${config.url.api.panel}/${user.uid}`, dataType: 'json', success: onLeproDataReceived });
-};
+}, 15000, { leading: true });
 
 // Put everything to local storage
 const onLeproDataReceived = (response) => {
@@ -56,9 +56,9 @@ const updateBadge = () => {
     return;
   }
 
-  const stuffPrefix = 's';
-  const inboxPrefix = 'i';
-  const bothPrefix = 'a';
+  const stuffPrefix = sharedSettings['prefix[stuff]'] || '';
+  const inboxPrefix = sharedSettings['prefix[inbox]'] || '';
+  const bothPrefix = sharedSettings['prefix[both]'] || '';
   const getSummText = (summ) => summ >= 100 ? '99+' : summ;
   let { myunreadposts, myunreadcomms, inboxunreadposts, inboxunreadcomms } = sharedData;
 
@@ -112,12 +112,17 @@ browser.storage.onChanged.addListener((data) => {
   }
 });
 
-// Each time user load page send to loader.js sharedData and sharedSettings
+// Each time user load page or open popup send to script sharedData and sharedSettings
 // Will be passed to content scripts
 browser.runtime.onConnect.addListener((port) => {
-  if (port.name === 'leprabuttonPort') {
-    leprabuttonPort = port;
-    leprabuttonPort.postMessage({ sharedData, sharedSettings });
+  switch (port.name) {
+    case 'leprabuttonDataPort':
+      leprabuttonDataPort = port;
+      leprabuttonDataPort.postMessage({ sharedData, sharedSettings });
+      break;
+    case 'leprabuttonUpdatePort':
+      requestLeproData();
+      break;
   }
 });
 

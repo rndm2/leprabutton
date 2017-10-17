@@ -1,6 +1,7 @@
-browser.runtime.connect({ name: 'leprabuttonPort' })
+browser.runtime.connect({ name: 'leprabuttonUpdatePort' });
+browser.runtime.connect({ name: 'leprabuttonDataPort' })
   .onMessage.addListener((data) => {
-    console.log('Received message from background script', data);
+    console.log('Content script loader received message from background script', data);
 
     userScripts.forEach(script => {
       if (data.sharedSettings[`plugin[${script.name}]`] === true && script.include.test(window.location.href)) {

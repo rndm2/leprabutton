@@ -46,9 +46,10 @@ const updateUI = (data1) => {
   $('#icon-inbox-active').toggle(hasInboxes);
 };
 
-browser.runtime.connect({ name: 'leprabuttonPort' })
+browser.runtime.connect({ name: 'leprabuttonUpdatePort' });
+browser.runtime.connect({ name: 'leprabuttonDataPort' })
   .onMessage.addListener((data) => {
-    console.log('Received message from background script', data);
+    console.log('Popup helper received message from background script', data);
     updateUI(data);
   });
 
