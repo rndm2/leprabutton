@@ -16,6 +16,7 @@ const config = {
     'prefix[stuff]': 's',
     'prefix[inbox]': 'i',
     'prefix[both]': 'a',
+    'plugin[updateComments]': true,
     'plugin[postPreview]': true,
     'plugin[commentAndRatingFont]': true,
     'plugin[navButtons]': true,
