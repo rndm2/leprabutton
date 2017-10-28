@@ -16,6 +16,7 @@
       "48": "icons/logo48.png"
     },
     "default_title": "Привет, %username%! Жми давай уже!",
+    "chrome_style": true,
     "default_popup": "popup/index.html"
   },
 
@@ -24,7 +25,8 @@
   },
 
   "options_ui": {
-    "page": "options/index.html"
+    "page": "options/index.html",
+    "chrome_style": true
   },
 
   "content_scripts": [
