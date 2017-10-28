@@ -2,19 +2,8 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.18",
+  "version": "0.19",
   "author": "random2",
-  "developer": {
-    "name": "random2",
-    "url": "http://random.net.ua/leprabutton"
-  },
-
-  "applications": {
-    "gecko": {
-      "id": "leprabutton@random.net.ua",
-      "strict_min_version": "42.0"
-    }
-  },
 
   "description": "Добавялет лепрокнопку (в которой панель) и некоторые полезные юзерскрипты",
 
@@ -27,7 +16,6 @@
       "48": "icons/logo48.png"
     },
     "default_title": "Привет, %username%! Жми давай уже!",
-    "browser_style": true,
     "default_popup": "popup/index.html"
   },
 
@@ -36,8 +24,7 @@
   },
 
   "options_ui": {
-    "page": "options/index.html",
-    "browser_style": true
+    "page": "options/index.html"
   },
 
   "content_scripts": [

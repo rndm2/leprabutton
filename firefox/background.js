@@ -37,8 +37,20 @@ const onInitialDataReceived = (responses) => {
 
 // Request site data
 const requestLeproData = _.throttle(() => {
-  $.ajax({ type: 'get', url: config.url.api.panel, dataType: 'json', success: onLeproDataReceived });
-  $.ajax({ type: 'get', url: `${config.url.api.panel}/${user.uid}`, dataType: 'json', success: onLeproDataReceived });
+  $.ajax({
+    type: 'get',
+    url: config.url.api.panel,
+    dataType: 'json',
+    success: onLeproDataReceived,
+    error: () => onLeproDataReceived({}),
+  });
+  $.ajax({
+    type: 'get',
+    url: `${config.url.api.panel}/${user.uid}`,
+    dataType: 'json',
+    success: onLeproDataReceived,
+    error: () => onLeproDataReceived({}),
+  });
 }, 15000, { leading: true });
 
 // Put everything to local storage
@@ -72,7 +84,7 @@ const updateBadge = () => {
   const bothSumm = stuffSumm + inboxSumm;
 
   let titleText =
-    ` Привет, ${sharedData.login}! Вот что у тебя есть: ` +
+    ` Привет, ${sharedData.login}! Вот что у тебя есть - ` +
     (stuffSumm ? `мои вещи: ` : '') +
     `${myunreadposts > 0 ? (myunreadposts + '/' + myunreadcomms) : (myunreadcomms > 0 ? myunreadcomms : '')}` +
     (stuffSumm && inboxSumm ? `, ` : '') +
