@@ -51,28 +51,34 @@ chrome.runtime.connect({ name: 'leprabuttonDataPort' })
   .onMessage.addListener((data) => {
     console.log('Popup helper received message from background script', data);
     updateUI(data);
+    addListener(data);
   });
 
+const addListener = (data1) => {
+  const { sharedSettings: settings } = data1;
 
-document.addEventListener('click', (e) => {
-  if (e.button > 1) {
-    return;
-  }
+  document.addEventListener('click', (e) => {
+    if (e.button > 1) {
+      return;
+    }
 
-  switch(true) {
-    case e.target.className.search('link-logo') !== -1:
-      navigate('https://leprosorium.ru', e.button !== 0);
-      break;
-    case e.target.className.search('link-stuff') !== -1:
-      navigate('https://leprosorium.ru/my', e.button !== 0);
-      break;
-    case e.target.className.search('link-inbox') !== -1:
-      navigate('https://leprosorium.ru/my/inbox', e.button !== 0);
-      break;
-    default:
-      break;
-  }
-});
+    const isNewWindow = settings.alwaysNewWindow || e.button !== 0;
+
+    switch (true) {
+      case e.target.className.search('link-logo') !== -1:
+        navigate('https://leprosorium.ru', isNewWindow);
+        break;
+      case e.target.className.search('link-stuff') !== -1:
+        navigate('https://leprosorium.ru/my', isNewWindow);
+        break;
+      case e.target.className.search('link-inbox') !== -1:
+        navigate('https://leprosorium.ru/my/inbox', isNewWindow);
+        break;
+      default:
+        break;
+    }
+  });
+};
 
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();

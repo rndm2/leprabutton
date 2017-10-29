@@ -13,6 +13,7 @@ const config = {
     showLabels: true,
     thirdOption: false,
     updatePeriod: 5,
+    alwaysNewWindow: false,
     'prefix[stuff]': 's',
     'prefix[inbox]': 'i',
     'prefix[both]': 'a',

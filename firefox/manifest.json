@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.19",
+  "version": "0.20",
   "author": "random2",
   "developer": {
     "name": "random2",
@@ -72,8 +72,6 @@
     "https://leprosorium.ru/*",
     "http://*.leprosorium.ru/*",
     "https://*.leprosorium.ru/*",
-    "webRequest",
-    "webNavigation",
     "cookies",
     "storage"
   ]
