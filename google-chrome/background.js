@@ -32,9 +32,9 @@ const onInitialDataReceived = (responses) => {
     return;
   }
 
-  sharedSettings = Object.assign({}, config.defaults, leprabuttonSettings);
+  sharedSettings = Object.assign({}, config.defaults, leprabuttonSettings, config.forceRewriteSettings);
   sharedData = Object.assign({}, leprabutton);
-  user.uid = cookie.value;
+  user[config.cookieName] = cookie.value;
 
   requestLeproData();
 

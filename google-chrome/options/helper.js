@@ -15,7 +15,7 @@ const storeSettings = () => {
 
 const updateUI = (restoredSettings) => {
   const options = document.querySelectorAll("input");
-  const settings = Object.assign({}, config.defaults, restoredSettings.leprabuttonSettings || config.defaults);
+  const settings = Object.assign({}, config.defaults, restoredSettings.leprabuttonSettings || config.defaults, config.forceRewriteSettings);
 
   [].forEach.call(options, (option) => {
     option[option.type === 'checkbox' ? 'checked' : 'value'] = settings[option.id];

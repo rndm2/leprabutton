@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.20",
+  "version": "0.21",
   "author": "random2",
   "developer": {
     "name": "random2",
@@ -49,6 +49,8 @@
         "lib/zepto.utils.js",
         "config.js",
         "userscripts/core/init.js",
+        "userscripts/colors.js",
+        "userscripts/archive.js",
         "userscripts/updateComments.js",
         "userscripts/postPreview.js",
         "userscripts/commentAndRatingFont.js",

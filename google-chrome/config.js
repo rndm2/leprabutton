@@ -17,6 +17,8 @@ const config = {
     'prefix[stuff]': 's',
     'prefix[inbox]': 'i',
     'prefix[both]': 'a',
+    'plugin[colors]': true,
+    'plugin[archive]': true,
     'plugin[updateComments]': true,
     'plugin[postPreview]': true,
     'plugin[commentAndRatingFont]': true,
@@ -30,5 +32,8 @@ const config = {
     'plugin[placeKarmaButtons]': true,
     'plugin[hideCitizenship]': true,
     'plugin[upButton]': true,
+  },
+  forceRewriteSettings: {
+    'plugin[postPreview]': false,
   }
 };
