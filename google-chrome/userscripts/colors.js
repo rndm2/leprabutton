@@ -3,9 +3,7 @@ userScripts.push({
 
   include: new RegExp(":\/\/([a-zA-Z0-9]+\.)?leprosorium\.ru"),
 
-  run: (data) => {
-    console.log(data);
-
+  run: () => {
     const hostFunction = () => {
       window.Colors = {
         'background_color': '#FFFFFF',

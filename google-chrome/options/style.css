@@ -1,5 +1,5 @@
 body {
-    min-width: 500px;
+    min-width: 600px;
 }
 
 .options {
@@ -45,4 +45,14 @@ body {
     width: 80%;
     font-size: 0.9em;
     color: gray;
+}
+
+.options .secondInput {
+    margin-left: calc(80% + 10px);
+    margin-bottom: 12px;
+    width: 110px;
+}
+
+.options .secondInput.last {
+    margin-bottom: 0;
 }

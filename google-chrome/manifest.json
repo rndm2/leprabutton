@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Leprabutton",
-  "version": "0.21",
+  "version": "0.22",
   "author": "random2",
 
   "description": "Добавялет лепрокнопку (в которой панель) и некоторые полезные юзерскрипты",
@@ -39,7 +39,7 @@
         "config.js",
         "userscripts/core/init.js",
         "userscripts/colors.js",
-        "userscripts/archive.js",
+        "userscripts/customLink.js",
         "userscripts/updateComments.js",
         "userscripts/postPreview.js",
         "userscripts/commentAndRatingFont.js",

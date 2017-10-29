@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -11,92 +11,97 @@
 <form class="options">
     <h1>Некоторые настройки:</h1>
     <div>
-        <label><span>Показывать непрочитанное на кнопке</span><input type="checkbox" id="showBadges"/></label>
+        <label><span>Показывать непрочитанное на кнопке</span><input type="checkbox" id="showBadges" /></label>
         <span>Если включено будет показывать количество непрочитанных постов/инбоксов на кнопке в тулбаре</span>
     </div>
     <div id="prefix">
         <label><span>Префиксы непрочитанного на кнопке (мои вещи/инбокс/и мои вещи и инбокс)</span>
-            <input class="short" type="text" maxlength="1" id="prefix[stuff]"/>
-            <input class="short" type="text" maxlength="1" id="prefix[inbox]"/>
-            <input class="short" type="text" maxlength="1" id="prefix[both]"/>
+            <input class="short" type="text" maxlength="1" id="prefix[stuff]" />
+            <input class="short" type="text" maxlength="1" id="prefix[inbox]" />
+            <input class="short" type="text" maxlength="1" id="prefix[both]" />
         </label>
         <span>Так как на кнопку влазит всего 4 символа пришлось сделать буквенные префексы чтобы было понятно к чему относятся цифры на кнопке</span>
     </div>
     <div>
-        <label><span>Показывать метки</span><input type="checkbox" id="showLabels"/></label>
+        <label><span>Показывать метки</span><input type="checkbox" id="showLabels" /></label>
         <span>Если включено будет показывать метки карма/рейтинг в всплывающей панели</span>
     </div>
     <div>
-        <label><span>Смешная третья опция</span><input type="checkbox" id="thirdOption"/></label>
+        <label><span>Смешная третья опция</span><input type="checkbox" id="thirdOption" /></label>
     </div>
     <div>
-        <label><span>Период обновления (мин):</span><input type="number" id="updatePeriod"/></label>
+        <label><span>Период обновления (мин):</span><input type="number" id="updatePeriod" /></label>
         <span>Можно попробовать установить в ноль</span>
     </div>
     <div class="last">
-        <label><span>Всегда открывать ссылки в новой вкладке</span><input type="checkbox" id="alwaysNewWindow"/></label>
+        <label><span>Всегда открывать ссылки в новой вкладке</span><input type="checkbox" id="alwaysNewWindow" /></label>
         <span>Если включено при клике по панели Лепра будет всегда открываться в новой вкладке. Если выключено - левая кнопка мыши открывает в текущей вкладке, средняя кнопка (не работает в Chrome) открывает в новой.</span>
     </div>
 
     <h1>Юзерскрипты, пожалуйста:</h1>
     <div>
-        <label><span>Зафиксировать дефолтные цвета</span><input type="checkbox" id="plugin[colors]"/></label>
+        <label><span>Зафиксировать дефолтные цвета</span><input type="checkbox" id="plugin[colors]" /></label>
         <span>Если включено правительство не сможет покрасить главную, например в красный. Всегда будут отображаться стандартные цвета лепры.</span>
     </div>
     <div>
-        <label><span>Ссылка "Архив"</span><input type="checkbox" id="plugin[archive]"/></label>
-        <span>Добавляет ссылку "Архив" под ссылкой "Белый дом".</span>
+        <label>
+            <span>Кастомная ссылка</span>
+            <input type="checkbox" id="plugin[customLink]" />
+        </label>
+        <span>Добавляет кастомную ссылку под ссылкой "Белый дом".</span>
+        <input class="secondInput" type="text" id="plugin[customLinkTitle]" placeholder="Название" />
+        <input class="secondInput last" type="text" id="plugin[customLinkLink]" placeholder="Ссылка" />
     </div>
     <div>
-        <label><span>Кнопка обновить комментарии</span><input type="checkbox" id="plugin[updateComments]"/></label>
+        <label><span>Кнопка обновить комментарии</span><input type="checkbox" id="plugin[updateComments]" /></label>
         <span>Добавляет кнопку обновить комментарии внизу страницы справа.</span>
     </div>
     <div>
-        <label><span>Предпросмотр постов, инбоксов и комментариев</span><input disabled type="checkbox" id="plugin[postPreview]"/></label>
+        <label><span>Предпросмотр постов, инбоксов и комментариев</span><input disabled type="checkbox" id="plugin[postPreview]" /></label>
         <span>Добавляет возможность увидеть как будет выглядеть пост/инбокс/комментарий перед отправкой его на лепру. Довольно высокая точность достигается за счёт использования механизма инбоксов для предпросмотра. По этой же причине в предпросмотре не будет видно автозамен. К сожалению, Лепра установила лимит обращений к АПИ, поэтому не стоит слишком часто жать на кнопку предпросмотра.</span>
     </div>
     <div>
-        <label><span>Шрифт рейтинга комментариев</span><input type="checkbox" id="plugin[commentAndRatingFont]"/></label>
+        <label><span>Шрифт рейтинга комментариев</span><input type="checkbox" id="plugin[commentAndRatingFont]" /></label>
         <span>Изменяет размер и цвет шрифта рейтинга комментариев</span>
     </div>
     <div>
-        <label><span>Кнопки навигации</span><input type="checkbox" id="plugin[navButtons]"/></label>
+        <label><span>Кнопки навигации</span><input type="checkbox" id="plugin[navButtons]" /></label>
         <span>Добавляет кнопки со стрелками вверх/вниз для перемещения на предыдущий/следующий новый/свой комментарий. Работает внутри постов и инбоксов. Для перемещения только по своим комментариям нужно зажать Shift или Ctrl.</span>
     </div>
     <div>
-        <label><span>Полупрозрачные картинки</span><input type="checkbox" id="plugin[transparentImages]"/></label>
+        <label><span>Полупрозрачные картинки</span><input type="checkbox" id="plugin[transparentImages]" /></label>
         <span>Все приложенные картинки отображаются прозрачными (на 75%, если точнее), и приобретают нормальный облик при наведении на них мышкой. Бывает очень полезно для экстремального чтения лепры, особенно в офисе, особенно в пятницу. Работает внутри постов и инбоксов.</span>
     </div>
     <div>
-        <label><span>Заменять запятую на двоеточие в ответах на комментарии</span><input type="checkbox" id="plugin[commaToColon]"/></label>
+        <label><span>Заменять запятую на двоеточие в ответах на комментарии</span><input type="checkbox" id="plugin[commaToColon]" /></label>
         <span>Заменяет запятую на двоеточие при ответах на комментарии так как это было на старой лепре.</span>
     </div>
     <div>
-        <label><span>Верните номера</span><input type="checkbox" id="plugin[userNumbers]"/></label>
+        <label><span>Верните номера</span><input type="checkbox" id="plugin[userNumbers]" /></label>
         <span>Показывает номера пользователей рядом с юзернеймом.</span>
     </div>
     <div>
-        <label><span>Стереть из моих вещей</span><input type="checkbox" id="plugin[eraseFromStuff]"/></label>
+        <label><span>Стереть из моих вещей</span><input type="checkbox" id="plugin[eraseFromStuff]" /></label>
         <span>Меняет "из моих вещей" на "стереть из моих вещей" как было раньше.</span>
     </div>
     <div>
-        <label><span>Изменения кармы</span><input type="checkbox" id="plugin[karmaAttitude]"/></label>
+        <label><span>Изменения кармы</span><input type="checkbox" id="plugin[karmaAttitude]" /></label>
         <span>При заходе в чужой профиль показывает срал ли вам юзернейм в карму и каким образом.</span>
     </div>
     <div>
-        <label><span>Пофиксить профили латышей</span><input type="checkbox" id="plugin[goodLatvia]"/></label>
+        <label><span>Пофиксить профили латышей</span><input type="checkbox" id="plugin[goodLatvia]" /></label>
         <span>Для латышей не будет огромной чёрной конины в профиле на весь экран, вместо этого аккуратная ссылка под юзернеймом, которая и покажет конину.</span>
     </div>
     <div>
-        <label><span>Поставить кнопки кармы на место</span><input type="checkbox" id="plugin[placeKarmaButtons]"/></label>
+        <label><span>Поставить кнопки кармы на место</span><input type="checkbox" id="plugin[placeKarmaButtons]" /></label>
         <span>Всю жизнь плюсики были сверху, а минусики снизу и тут хуяк и кто-то решил иначе. Скрипт уберет уёбищность плюсиков-минусиков в профиле пользователя.</span>
     </div>
     <div>
-        <label><span>Скрыть надпись о гражданстве в профиле</span><input type="checkbox" id="plugin[hideCitizenship]"/></label>
+        <label><span>Скрыть надпись о гражданстве в профиле</span><input type="checkbox" id="plugin[hideCitizenship]" /></label>
         <span>Спасибо, скройте мне пожалуйста. На хую я вертел такой маркетинг.</span>
     </div>
     <div class="last">
-        <label><span>Кнопка наверх</span><input type="checkbox" id="plugin[upButton]"/></label>
+        <label><span>Кнопка наверх</span><input type="checkbox" id="plugin[upButton]" /></label>
         <span>Добавляет кнопку наверх на всех страницах сайта.</span>
     </div>
 </form>

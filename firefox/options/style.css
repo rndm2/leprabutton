@@ -42,3 +42,12 @@
     font-size: 0.9em;
     color: gray;
 }
+
+.options .secondInput {
+    margin-left: 80%;
+    margin-bottom: 12px;
+}
+
+.options .secondInput.last {
+    margin-bottom: 0;
+}
