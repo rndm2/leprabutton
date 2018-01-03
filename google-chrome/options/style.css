@@ -33,6 +33,10 @@ body {
     width: 50px;
 }
 
+.options div label input[type="checkbox"] {
+    margin-right: 5px;
+}
+
 .options div label input.short {
     width: 25px;
     text-align: center;
@@ -55,4 +59,8 @@ body {
 
 .options .secondInput.last {
     margin-bottom: 0;
+}
+
+.hidden {
+    display: none;
 }

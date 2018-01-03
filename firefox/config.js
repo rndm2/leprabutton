@@ -26,6 +26,8 @@ const config = {
     'plugin[commentAndRatingFont]': true,
     'plugin[navButtons]': true,
     'plugin[transparentImages]': false,
+    'plugin[transparentImagesRegexEnabled]': false,
+    'plugin[transparentImagesRegex]': 'idiod.',
     'plugin[commaToColon]': true,
     'plugin[userNumbers]': true,
     'plugin[eraseFromStuff]': true,

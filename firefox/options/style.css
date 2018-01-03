@@ -51,3 +51,7 @@
 .options .secondInput.last {
     margin-bottom: 0;
 }
+
+.hidden {
+    display: none;
+}

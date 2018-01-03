@@ -69,8 +69,13 @@
         <span>Добавляет кнопки со стрелками вверх/вниз для перемещения на предыдущий/следующий новый/свой комментарий. Работает внутри постов и инбоксов. Для перемещения только по своим комментариям нужно зажать Shift или Ctrl.</span>
     </div>
     <div>
-        <label><span>Полупрозрачные картинки</span><input type="checkbox" id="plugin[transparentImages]" /></label>
+        <label>
+            <span>Полупрозрачные картинки</span>
+            <input type="checkbox" id="plugin[transparentImages]" />
+            <input type="checkbox" title="Я хочу установить регулярное выражение где срабатывать скрипту" id="plugin[transparentImagesRegexEnabled]" />
+        </label>
         <span>Все приложенные картинки отображаются прозрачными (на 75%, если точнее), и приобретают нормальный облик при наведении на них мышкой. Бывает очень полезно для экстремального чтения лепры, особенно в офисе, особенно в пятницу. Работает внутри постов и инбоксов.</span>
+        <input class="secondInput hidden" type="text" id="plugin[transparentImagesRegex]" placeholder="Регулярное выражение" />
     </div>
     <div>
         <label><span>Заменять запятую на двоеточие в ответах на комментарии</span><input type="checkbox" id="plugin[commaToColon]" /></label>
